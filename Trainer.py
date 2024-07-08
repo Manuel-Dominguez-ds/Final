@@ -176,7 +176,7 @@ class Trainer():
         print(f"\n > Evaluating and saving best model.")
         models_results=pd.DataFrame(self.models)
         # save results to txt
-        filename = f'training_output - {dat.datetime.now().strftime("%Y-%m-%d %H-%M")}.csv'
+        filename = f'training_output - {date.today()}.csv'
         with open(filename, 'a') as file:
             file.write("Models,Accuracy,Precision,Recall,F1,AUC,PRAUC,Threshold,PonderatedScore\n")
             for i in range(models_results.shape[0]):

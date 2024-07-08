@@ -25,7 +25,7 @@ class Scorer():
         test_data["Revenue"] = predictions
         print('\n------------------\nPredictions for Test Data\n------------------\n')
         #print(sample_data)
-        filename = f'Revenue Predictions - {dat.datetime.now().strftime("%Y-%m-%d %H-%M")}.csv'     
+        filename= f'Revenue Predictions - {date.today()}.csv'
         with open(filename, 'a') as file:
             file.write("Index,Revenue\n")
             for i in range(test_data.shape[0]):
