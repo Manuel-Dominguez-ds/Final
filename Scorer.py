@@ -15,18 +15,6 @@ class Scorer():
         model = self.load_model()
         print("\n > Model loaded.")
         
-        # print("\n > Loading scaler.")
-        # scaler = self.load_scaler()
-        # print("\n > Scaler loaded.")
-        
-        # print("\n > Loading Encoders.")
-        # encoder1,encoder2 = self.load_encoders()
-        # print("\n > Encoders loaded.")
-        
-        # print("\n > Loading Imputers.")
-        # cat_imputer,num_imputer = self.load_imputers()
-        # print("\n > Imputers loaded.")
-        
         print("\n > Preprocessing.")
         sample_data = self.preprocessing(test_data)
         # print("\n > Loading vectorizer.")
@@ -36,7 +24,7 @@ class Scorer():
         test_data["Revenue"] = predictions
         print('\n------------------\nPredictions for Test Data\n------------------\n')
         #print(sample_data)
-        filename= f'Revenue Predictions - {date.today()}.csv'
+        filename = f'Revenue Predictions - {datetime.now().strftime("%Y-%m-%d %H-%M")}.csv'     
         with open(filename, 'a') as file:
             file.write("Index,Revenue\n")
             for i in range(test_data.shape[0]):
@@ -56,30 +44,7 @@ class Scorer():
         with open('Pickle/best_model.pkl', 'rb') as file:
             loaded_model = pickle.load(file)
             return loaded_model
-        
-    # def load_scaler(self):
-    #     print("\n > Loading Scaler from memory.")
-    #     with open('Pickle/Scaler.pkl', 'rb') as file:
-    #         scaler = pickle.load(file)
-    #         return scaler
-        
-    # def load_encoders(self):
-    #     print("\n > Loading Scaler from memory.")
-    #     with open('Pickle/CountFrequency.pkl', 'rb') as file:
-    #         encoder1 = pickle.load(file)
-            
-    #     with open('Pickle/OrdinalEncoder.pkl', 'rb') as file:
-    #         encoder2 = pickle.load(file)
-    #     return encoder1,encoder2
-        
-    # def load_imputers(self):
-    #     print("\n > Loading Imputers from memory.")
-    #     with open('Pickle/cat_imputer.pkl', 'rb') as file:
-    #         cat_imputer = pickle.load(file)
-            
-    #     with open('Pickle/num_imputer.pkl', 'rb') as file:
-    #         num_imputer = pickle.load(file)
-    #     return cat_imputer,num_imputer
+
     def load_threshold(self):
         with open('Data/Threshold.txt', 'rb') as file:
             print("\n > Loading Threshold from memory.")
