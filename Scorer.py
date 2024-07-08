@@ -1,4 +1,5 @@
 from class_and_functions import *
+import datetime as dat
 
 
 class Scorer():
@@ -24,7 +25,7 @@ class Scorer():
         test_data["Revenue"] = predictions
         print('\n------------------\nPredictions for Test Data\n------------------\n')
         #print(sample_data)
-        filename = f'Revenue Predictions - {datetime.now().strftime("%Y-%m-%d %H-%M")}.csv'     
+        filename = f'Revenue Predictions - {dat.datetime.now().strftime("%Y-%m-%d %H-%M")}.csv'     
         with open(filename, 'a') as file:
             file.write("Index,Revenue\n")
             for i in range(test_data.shape[0]):
@@ -38,6 +39,7 @@ class Scorer():
                 line = f"{decoded_text},{decoded_predictions}"
                 file.write(line + "\n")
         print(f"Training results have been saved to {filename}")
+        return filename
 
     def load_model(self):
         print("\n > Loading BestModel from memory.")
